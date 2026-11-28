@@ -425,12 +425,13 @@ html.lenis body {
 
 /* ── Hero entrance: the leaders draw out of the chip, then labels and the foot rise in.
    The lid and its title paint at once (they are the page's largest text). */
-.hero-in { animation: hero-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+/* Quick: everything is in place within about 0.8s of first paint. */
+.hero-in { animation: hero-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 @keyframes hero-in {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: none; }
 }
-.lead-in { animation: lead-in 0.7s cubic-bezier(0.3, 0.7, 0.2, 1) both; }
+.lead-in { animation: lead-in 0.5s cubic-bezier(0.3, 0.7, 0.2, 1) both; }
 @keyframes lead-in {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }

@@ -126,7 +126,7 @@ export default function HeroPinout({ glow = "orbit", seat = "float", lid = "meta
 
         <div className="relative my-6 flex flex-1 flex-col items-center justify-center gap-6 lg:mb-10 lg:mt-0 lg:gap-5">
           {/* 3 · The motto, above the chip in the accent. */}
-          <p className="hero-in rd-motto relative z-[5] text-balance text-center text-[clamp(17px,5vw,21px)] font-semibold leading-[1.25] tracking-[-0.02em] lg:text-[clamp(19px,1.55vw,25px)]" style={{ animationDelay: "0.3s" }}>AI for Mankind, Society and the<br />Sustainable Development</p>
+          <p className="hero-in rd-motto relative z-[5] text-balance text-center text-[clamp(17px,5vw,21px)] font-semibold leading-[1.25] tracking-[-0.02em] lg:text-[clamp(19px,1.55vw,25px)]" style={{ animationDelay: "0.1s" }}>AI for Mankind, Society and the<br />Sustainable Development</p>
           <div className="chip relative">
             {/* What the chip sits in, and the light. */}
             {seat === "socket" && (
@@ -165,7 +165,7 @@ export default function HeroPinout({ glow = "orbit", seat = "float", lid = "meta
                 <div key={e.slug} aria-hidden>
                   <span
                     className={`lead-in absolute z-[1] h-px -translate-y-1/2 transition-colors duration-300 ${left ? "origin-right" : "origin-left"} ${on ? "bg-orange" : "bg-white/15"}`}
-                    style={{ top: y, width: "calc(var(--inset-x) + var(--pin) + var(--lead))", animationDelay: `${0.15 + (ev % PER) * 0.06}s`, ...from }}
+                    style={{ top: y, width: "calc(var(--inset-x) + var(--pin) + var(--lead))", animationDelay: `${0.05 + (ev % PER) * 0.03}s`, ...from }}
                   >
                     <span className={`absolute top-1/2 h-[5px] w-[5px] -translate-y-1/2 rounded-full transition-[background-color,box-shadow] duration-300 ${left ? "-left-[2px]" : "-right-[2px]"} ${on ? "bg-orange shadow-[0_0_10px_color-mix(in_oklab,var(--color-orange)_80%,transparent)]" : "bg-white/30"}`} />
                   </span>
@@ -179,7 +179,7 @@ export default function HeroPinout({ glow = "orbit", seat = "float", lid = "meta
             <span
               aria-hidden
               className={`lead-in absolute left-1/2 z-[4] w-px -translate-x-1/2 origin-top transition-colors duration-300 ${active === BI ? "bg-orange" : "bg-white/15"}`}
-              style={{ top: "100%", height: "24px", animationDelay: "0.5s" }}
+              style={{ top: "100%", height: "24px", animationDelay: "0.2s" }}
             >
               <span className={`absolute -bottom-[2px] left-1/2 h-[5px] w-[5px] -translate-x-1/2 rounded-full transition-[background-color,box-shadow] duration-300 ${active === BI ? "bg-orange shadow-[0_0_10px_color-mix(in_oklab,var(--color-orange)_80%,transparent)]" : "bg-white/30"}`} />
             </span>
@@ -257,7 +257,7 @@ export default function HeroPinout({ glow = "orbit", seat = "float", lid = "meta
                   <li
                     key={e.slug}
                     className="hero-in absolute -translate-y-[9px]"
-                    style={{ animationDelay: `${0.4 + (i % PER) * 0.06}s`, top: yOf(slot(i)), ...(left ? { right: "calc(100% + var(--pin) + var(--lead) + 14px)" } : { left: "calc(100% + var(--pin) + var(--lead) + 14px)" }) }}
+                    style={{ animationDelay: `${0.12 + (i % PER) * 0.03}s`, top: yOf(slot(i)), ...(left ? { right: "calc(100% + var(--pin) + var(--lead) + 14px)" } : { left: "calc(100% + var(--pin) + var(--lead) + 14px)" }) }}
                   >
                     <ContestLink
                       e={e}
@@ -275,7 +275,7 @@ export default function HeroPinout({ glow = "orbit", seat = "float", lid = "meta
                 );
               })}
               {/* The ICT Olympiad, under the chip. */}
-              <li className="hero-in absolute left-1/2 -translate-x-1/2" style={{ animationDelay: "0.8s", top: "calc(100% + 31px)" }}>
+              <li className="hero-in absolute left-1/2 -translate-x-1/2" style={{ animationDelay: "0.25s", top: "calc(100% + 31px)" }}>
                 <ContestLink
                   e={BOTTOM}
                   onPointerEnter={() => pick(BI)}
@@ -295,7 +295,7 @@ export default function HeroPinout({ glow = "orbit", seat = "float", lid = "meta
         {/* The Explore and Facebook buttons are off for now (HeroActions in ./shared). */}
       </div>
       {/* Prize night from BitFest 2025, drifting along the foot of the hero, edge to edge. */}
-      <div className="hero-in relative z-[5] -mx-6 mt-6 md:-mx-14 lg:mt-5" style={{ animationDelay: "0.7s" }}>
+      <div className="hero-in relative z-[5] -mx-6 mt-6 md:-mx-14 lg:mt-5" style={{ animationDelay: "0.2s" }}>
         <PrizeStrip variant="hero" />
       </div>
     </section>
