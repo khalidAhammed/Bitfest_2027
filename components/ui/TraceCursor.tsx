@@ -37,6 +37,7 @@ export default function TraceCursor() {
     root.classList.add("tc-on");
 
     let x = -100, y = -100, kind: Kind = "none", shown = false, raf = 0, dpr = 1;
+    let lastT: EventTarget | null = null;
     let pts: { x: number; y: number; life: number }[] = [];
 
     const size = () => {
@@ -57,8 +58,6 @@ export default function TraceCursor() {
 
     const frame = () => {
       raf = 0;
-      d.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      p.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       cx.clearRect(0, 0, innerWidth, innerHeight);
       for (const q of pts) q.life -= 0.05;
       pts = pts.filter((q) => q.life > 0);
@@ -77,15 +76,24 @@ export default function TraceCursor() {
     const onMove = (e: PointerEvent) => {
       if (e.pointerType !== "mouse") return;
       x = e.clientX; y = e.clientY;
+      // Move the dot here, not in the next animation frame, so it keeps pace with the real pointer.
+      const tf = `translate3d(${x}px, ${y}px, 0)`;
+      d.style.transform = tf; p.style.transform = tf;
       const last = pts[pts.length - 1];
       if (!last || Math.abs(last.x - x) + Math.abs(last.y - y) > 6) pts.push({ x, y, life: 1 });
       if (pts.length > 28) pts.shift();
       if (!shown) { shown = true; root.dataset.tc = "on"; }
-      setKind(kindOf(e.target as Element));
+      // Look up what is under the pointer only when it crosses onto another element.
+      if (e.target !== lastT) { lastT = e.target; setKind(kindOf(e.target as Element)); }
       kick();
     };
     // Scrolling moves the page under a still pointer: look again at what it is over.
-    const onScroll = () => { if (shown) setKind(kindOf(document.elementFromPoint(x, y))); };
+    // Throttled to one look per frame.
+    let looking = 0;
+    const onScroll = () => {
+      if (!shown || looking) return;
+      looking = requestAnimationFrame(() => { looking = 0; lastT = document.elementFromPoint(x, y); setKind(kindOf(lastT as Element | null)); });
+    };
     const onLeave = () => { shown = false; root.dataset.tc = "off"; pts = []; kick(); };
     const onDown = () => d.dataset.press = "true";
     const onUp = () => d.dataset.press = "false";
@@ -97,7 +105,7 @@ export default function TraceCursor() {
     window.addEventListener("pointerup", onUp);
     document.addEventListener("mouseleave", onLeave);
     return () => {
-      cancelAnimationFrame(raf);
+      cancelAnimationFrame(raf); cancelAnimationFrame(looking);
       root.classList.remove("tc-on");
       delete root.dataset.tc;
       window.removeEventListener("pointermove", onMove);

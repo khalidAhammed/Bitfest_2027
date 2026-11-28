@@ -998,6 +998,12 @@ button:hover > .faq-toggle[data-on="false"] { color: var(--color-ink); box-shado
    up) with no hard edge. */
 @media (min-width: 768px) {
   .rd-main { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 220px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 220px), transparent); }
+  /* Landing page: the same fade without masking the whole page. A mask over the full page made the
+     browser re-layer and re-raster all of it on every scroll frame, because the background comet's
+     canvas inside it changes each frame. Here the background itself fades, and only the last
+     section (static) and the faint stroke (static) carry a mask; the comet fades itself in code. */
+  .rd-main.rd-main-home { -webkit-mask-image: none; mask-image: none; background-color: transparent; background-image: linear-gradient(to bottom, var(--color-bg) calc(100% - 220px), transparent); }
+  .rd-main-home > .rd-fade-last, .rd-main-home .bg-stroke-svg { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 220px), transparent); mask-image: linear-gradient(to bottom, #000 calc(100% - 220px), transparent); }
 }
 
 /* Hero prize-night strip: one row of photos along the foot of the hero (the chip gives up the height).

@@ -27,14 +27,14 @@ export default function HomePage({ hero, nav = "top" }: { hero: ReactNode; nav?:
       {/* Wide screens with the side panel: the page sits to its right. */}
       <div className={side ? "lg:pl-[304px]" : "contents"}>
       {/* The page sits above the footer, which it reveals as it scrolls away (see HomeFooter). */}
-      <main className="rd-main relative z-10 bg-bg">
+      <main className="rd-main rd-main-home relative z-10 bg-bg">
         <BgStroke />
         {hero}
         <ContestCards />
         <PastGallery />
         <Partners />
         <Faq />
-        <section className="relative py-24 md:py-32">
+        <section className="rd-fade-last relative py-24 md:py-32">
           <div className="mx-auto max-w-[1440px] px-6 md:px-14">
             <FinalCall />
           </div>
