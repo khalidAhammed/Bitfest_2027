@@ -39,7 +39,7 @@ const general: { q: string; a: string }[] = [
     : []),
   {
     q: "Who organises BitFest?",
-    a: "The Department of Computer Science and Engineering at KUET. Each competition is run by a student club or society under faculty supervision: SGIPC runs IUPC; IEEE Computer Society AI-Driven Solutions and the ICT Olympiad; Bit2Byte the AI Hackathon; KMiNDS Three-Minute Thesis and the Datathon; HACK the Project Showcase, Line-Following Robot and Soccer Bot; KCSC Capture the Flag; and the BitFest team Imagine the Future with AI, the Tech Business Case Competition and Esports Gaming. Write to bitfest@cse.kuet.ac.bd.",
+    a: "The Department of Computer Science and Engineering at KUET. Each competition is run by a student club or society under faculty supervision: SGIPC runs IUPC; IEEE Computer Society AI-Driven Solutions and the ICT Olympiad; Bit2Byte the AI Hackathon; KMiNDS Three-Minute Thesis and the Datathon; HACK the Project Showcase, Line-Following Robot and Soccer Bot; KCSC Capture the Flag; and the BitFest team Imagine the Future with AI, the Tech Business Case Competition and Esports Gaming. Write to csefest@kuet.ac.bd.",
   },
 ];
 

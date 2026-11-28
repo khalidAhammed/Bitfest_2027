@@ -16,7 +16,7 @@ export const fest = {
   /** The total shown on the hero chip. The final proposal totals BDT 8,10,000 across the 13
       competitions; the organizers chose to show 700K on the site. */
   prizePool: "700K",
-  email: "bitfest@cse.kuet.ac.bd",
+  email: "csefest@kuet.ac.bd",
   phone: "+880 1723-593626",
   facebook: "https://www.facebook.com/BitFestCSE",
 };
