@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import TraceCursor from "@/components/ui/TraceCursor";
 import { festDescription } from "@/lib/fest";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={geist.variable}>
       <body className="grain min-h-screen bg-bg text-ink">
         <SmoothScroll />
+        <TraceCursor />
         {children}
       </body>
     </html>
