@@ -2,7 +2,7 @@ import type { ComponentType } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import EventPageLayout from "@/components/event/EventPageLayout";
-import { events, fest, CONTEST_PAGES_LIVE } from "@/lib/fest";
+import { events, fest, CONTEST_PAGES_LIVE, ogImage } from "@/lib/fest";
 import { eventPages } from "@/lib/eventPages";
 import IupcHero from "@/components/contests/IupcHero";
 import AiHackathonHero from "@/components/contests/AiHackathonHero";
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!e || !page) return {};
   const title = `${e.name} · ${fest.name} ${fest.year}`;
   // Each contest has its own 1200x630 card in public/og (name, final date, prize money, team size).
-  const image = { url: OG.has(slug) ? `/og/${slug}.jpg` : "/og/home.jpg", width: 1200, height: 630, alt: `${e.name} at ${fest.name} ${fest.year}, ${fest.dates} at ${fest.venue}.` };
+  const image = { url: ogImage(OG.has(slug) ? slug : "home"), width: 1200, height: 630, alt: `${e.name} at ${fest.name} ${fest.year}, ${fest.dates} at ${fest.venue}.` };
   return {
     title,
     description: page.description,

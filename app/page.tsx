@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import HomePage from "@/components/redesign/HomePage";
 import HeroPinout from "@/components/redesign/heroes/HeroPinout";
-import { CONTEST_PAGES_LIVE, events, festDescription } from "@/lib/fest";
+import { CONTEST_PAGES_LIVE, events, festDescription, ogImage } from "@/lib/fest";
 
 const SITE = "https://csefest.kuet.ac.bd";
 const kuet = {
@@ -23,7 +23,7 @@ const festJsonLd = {
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   location: kuet,
-  image: [`${SITE}/og/home.jpg`],
+  image: [ogImage("home")],
   url: SITE,
   organizer,
   subEvent: events.map((e) => ({
@@ -35,7 +35,7 @@ const festJsonLd = {
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: e.day === "Online" ? "https://schema.org/OnlineEventAttendanceMode" : "https://schema.org/OfflineEventAttendanceMode",
     location: e.day === "Online" ? { "@type": "VirtualLocation", url: CONTEST_PAGES_LIVE ? `${SITE}/events/${e.slug}` : SITE } : kuet,
-    image: [`${SITE}/og/${e.slug}.jpg`],
+    image: [ogImage(e.slug)],
     url: CONTEST_PAGES_LIVE ? `${SITE}/events/${e.slug}` : SITE,
     organizer,
   })),

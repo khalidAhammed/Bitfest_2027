@@ -3,7 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import TraceCursor from "@/components/ui/TraceCursor";
-import { festDescription } from "@/lib/fest";
+import { festDescription, ogImage } from "@/lib/fest";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     title,
     description,
     url: "/",
-    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "BitFest 4.0, the 4th KUET CSE Innovation Festival: 13 competitions on 5–6 February 2027 at KUET, Khulna." }],
+    images: [{ url: ogImage("home"), width: 1200, height: 630, alt: "BitFest 4.0, the 4th KUET CSE Innovation Festival: 13 competitions on 5–6 February 2027 at KUET, Khulna." }],
   },
-  twitter: { card: "summary_large_image", title, description, images: ["/og/home.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: [ogImage("home")] },
 };
 
 export const viewport: Viewport = {
