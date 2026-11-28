@@ -52,7 +52,7 @@ export default function HomeFooter() {
   }, []);
 
   const cols = [
-    { h: "Fest", l: [["Key dates", "/#schedule"], ["Gallery", "/#gallery"], ["Partners", "/#partners"], ["FAQ", "/#faq"]] },
+    { h: "Fest", l: [["Key dates", "/#schedule"], ["Gallery", "/#gallery"], ["Partners", "/#partners"]] },
     // Contest names link to their pages once those are public; until then they only light on hover.
     { h: "Contests", l: events.map((e) => [e.name, CONTEST_PAGES_LIVE ? eventHref(e) : "", isExternal(e) ? "ext" : ""]) },
     { h: "Contact", l: [[fest.email, `mailto:${fest.email}`, ""], [fest.phone, `tel:${fest.phone.replace(/[^+\d]/g, "")}`, ""], ["Facebook", fest.facebook, "ext"], ["KUET, Khulna 9203", "https://www.kuet.ac.bd", "ext"]] },

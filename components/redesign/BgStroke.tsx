@@ -54,27 +54,54 @@ export default function BgStroke() {
       const swings = Math.max(3, Math.round((end - top0) / (phone ? 1100 : 900)));
       const step = (end - top0) / swings;
       const L = w * (phone ? 0.08 : 0.06), R = w * (phone ? 0.92 : 0.94);
-      let d = `M ${-w * 0.04} ${top0} C ${w * 0.45} ${top0 + step * 0.05}, ${R + w * 0.04} ${top0 + step * 0.2}, ${R} ${top0 + step * 0.5}`;
+      // The curve as cubic segments [x0,y0, x1,y1, x2,y2, x3,y3]: one C, then S segments (whose first
+      // control point mirrors the previous segment's second one).
+      const segs: number[][] = [];
+      let cx0 = -w * 0.04, cy0 = top0;
+      let c1x = w * 0.45, c1y = top0 + step * 0.05, c2x = R + w * 0.04, c2y = top0 + step * 0.2, ex = R, ey = top0 + step * 0.5;
+      segs.push([cx0, cy0, c1x, c1y, c2x, c2y, ex, ey]);
       for (let i = 1; i <= swings; i++) {
         const y = top0 + step * (i + 0.5) - (i === swings ? step * 0.5 : 0);
         const x = i === swings ? (i % 2 ? -w * 0.04 : w * 1.04) : i % 2 ? L : R;
-        d += ` S ${i % 2 ? L - w * 0.06 : R + w * 0.06} ${y - step * 0.55}, ${x} ${y}`;
+        const n1x = 2 * ex - c2x, n1y = 2 * ey - c2y;
+        cx0 = ex; cy0 = ey; c2x = i % 2 ? L - w * 0.06 : R + w * 0.06; c2y = y - step * 0.55; ex = x; ey = y;
+        segs.push([cx0, cy0, n1x, n1y, c2x, c2y, ex, ey]);
       }
+      const r = (v: number) => Math.round(v * 10) / 10;
+      let d = `M ${r(segs[0][0])} ${r(segs[0][1])}`;
+      for (const g of segs) d += ` C ${r(g[2])} ${r(g[3])}, ${r(g[4])} ${r(g[5])}, ${r(g[6])} ${r(g[7])}`;
       s.setAttribute("viewBox", `0 0 ${w} ${h}`);
       s.setAttribute("width", String(w)); s.setAttribute("height", String(h));
       p.setAttribute("d", d);
       p.setAttribute("stroke", `rgba(34, 197, 94, ${phone ? 0.06 : 0.08})`);
       p.setAttribute("stroke-width", phone ? "1" : "1.25");
-      len = p.getTotalLength();
+      // Measure the curve in plain arithmetic (a fine polyline, then even steps along it). The
+      // browser's getPointAtLength took seconds of main-thread time on phones for this many points.
+      const K = 96, fx: number[] = [], fy: number[] = [], fl: number[] = [];
+      let acc = 0;
+      for (const [x0, y0, x1, y1, x2, y2, x3, y3] of segs) {
+        for (let k = fx.length ? 1 : 0; k <= K; k++) {
+          const t = k / K, u = 1 - t;
+          const X = u * u * u * x0 + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t * t * t * x3;
+          const Y = u * u * u * y0 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t * t * t * y3;
+          if (fx.length) acc += Math.hypot(X - fx[fx.length - 1], Y - fy[fy.length - 1]);
+          fx.push(X); fy.push(Y); fl.push(acc);
+        }
+      }
+      len = acc;
+      const n = Math.ceil(len / STEP) + 1;
+      px = new Float32Array(n); py = new Float32Array(n);
+      for (let i = 0, j = 0; i < n; i++) {
+        const at = Math.min(len, i * STEP);
+        while (j < fl.length - 2 && fl[j + 1] < at) j++;
+        const f = (at - fl[j]) / (fl[j + 1] - fl[j] || 1);
+        px[i] = fx[j] + (fx[j + 1] - fx[j]) * f; py[i] = fy[j] + (fy[j + 1] - fy[j]) * f;
+      }
       // Furthest y reached by each slice of the line, so the comet follows the page downward.
       ys = [];
       let m = -Infinity;
-      for (let i = 0; i <= N; i++) { m = Math.max(m, p.getPointAtLength((len * i) / N).y); ys.push(m); }
+      for (let i = 0; i <= N; i++) { m = Math.max(m, py[Math.min(n - 1, Math.round(((len * i) / N) / STEP))]); ys.push(m); }
       if (still) return;
-      // The line as points every STEP px, for drawing the comet.
-      const n = Math.ceil(len / STEP) + 1;
-      px = new Float32Array(n); py = new Float32Array(n);
-      for (let i = 0; i < n; i++) { const q = p.getPointAtLength(Math.min(len, i * STEP)); px[i] = q.x; py[i] = q.y; }
       sizeCanvas(); measure();
       if (head < 0) head = target();
       kick();
@@ -154,12 +181,14 @@ export default function BgStroke() {
     function kick() { if (!raf && !still) raf = requestAnimationFrame(frame); }
     const onResize = () => { if (!still) { measure(); kick(); } };
 
-    build();
-    const ro = new ResizeObserver(() => build());
+    // Built once the observer first reports main's size, and again at most once a frame as the page
+    // settles (images and fonts arriving change its height).
+    let pend = 0;
+    const ro = new ResizeObserver(() => { if (!pend) pend = requestAnimationFrame(() => { pend = 0; build(); }); });
     ro.observe(main);
     window.addEventListener("scroll", kick, { passive: true });
     window.addEventListener("resize", onResize);
-    return () => { ro.disconnect(); cancelAnimationFrame(raf); window.removeEventListener("scroll", kick); window.removeEventListener("resize", onResize); };
+    return () => { ro.disconnect(); cancelAnimationFrame(raf); cancelAnimationFrame(pend); window.removeEventListener("scroll", kick); window.removeEventListener("resize", onResize); };
   }, []);
 
   return (

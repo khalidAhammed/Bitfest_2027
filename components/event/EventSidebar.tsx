@@ -15,7 +15,6 @@ const HOME = [
   { href: "/#schedule", label: "Dates" },
   { href: "/#gallery", label: "Gallery" },
   { href: "/#partners", label: "Partners" },
-  { href: "/#faq", label: "FAQ" },
 ];
 
 function Panel({ slug, register, onPick }: { slug?: string; register: { href: string; label: string }; onPick?: () => void }) {

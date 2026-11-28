@@ -12,7 +12,6 @@ const HOME_LINKS: NavLink[] = [
   { href: "#schedule", label: "Schedule" },
   { href: "#gallery", label: "Gallery" },
   { href: "#partners", label: "Partners" },
-  { href: "#faq", label: "FAQ" },
 ];
 
 /** Events: one panel, every contest in two columns. Opens on hover or click, closes on leaving,

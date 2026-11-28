@@ -4,7 +4,6 @@ import EventSidebar from "@/components/event/EventSidebar";
 import ContestCards from "./schedule/ContestCards";
 import PastGallery from "./gallery/Gallery";
 import Partners from "./Partners";
-import Faq from "./Faq";
 import FinalCall from "./FinalCall";
 import HomeFooter from "./HomeFooter";
 import BgStroke from "./BgStroke";
@@ -33,7 +32,7 @@ export default function HomePage({ hero, nav = "top" }: { hero: ReactNode; nav?:
         <ContestCards />
         <PastGallery />
         <Partners />
-        <Faq />
+        {/* The FAQ is off the landing page for now (./Faq). */}
         <section className="rd-fade-last relative py-24 md:py-32">
           <div className="mx-auto max-w-[1440px] px-6 md:px-14">
             <FinalCall />
