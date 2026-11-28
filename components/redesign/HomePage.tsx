@@ -7,6 +7,7 @@ import Partners from "./Partners";
 import Faq from "./Faq";
 import FinalCall from "./FinalCall";
 import HomeFooter from "./HomeFooter";
+import BgStroke from "./BgStroke";
 
 /** The homepage below the hero is the same in every version; only the hero changes. */
 /** `nav`: "top" is the original bar; "side" is the side panel the contest pages use (the landing page). */
@@ -27,6 +28,7 @@ export default function HomePage({ hero, nav = "top" }: { hero: ReactNode; nav?:
       <div className={side ? "lg:pl-[304px]" : "contents"}>
       {/* The page sits above the footer, which it reveals as it scrolls away (see HomeFooter). */}
       <main className="rd-main relative z-10 bg-bg">
+        <BgStroke />
         {hero}
         <ContestCards />
         <PastGallery />
