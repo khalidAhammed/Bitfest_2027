@@ -1169,6 +1169,8 @@ button:hover > .faq-toggle[data-on="false"] { color: var(--color-ink); box-shado
 
 /* Hero photo labels stay on one line, even on the shortest screens. */
 :root:has(.rd-theme) .ps-hero .ps-cap { white-space: nowrap; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; }
+/* Small phones: the hero photo labels drop the year so the caption fits the tile. */
+@media (max-width: 479px) { :root:has(.rd-theme) .ps-hero .ps-cap { left: 12px; bottom: 12px; } .ps-hero .ps-yr { display: none; } }
 /* Hero pins: the category and day line under each name shows only on screens wider than 1920px. */
 @media (max-width: 1920px) { .pin-sub { display: none; } }
 @media (min-width: 1921px) { .pin-name { font-size: 17px; } }

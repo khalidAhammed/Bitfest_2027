@@ -52,7 +52,8 @@ export default function EventHero({
         <p className="hero-in text-[15px] font-medium text-soft">
           <span className="text-orange">{e.kind}</span> · {e.day === "Online" ? "Online, entries due 25 January" : `${e.day} on the KUET campus`}
         </p>
-        <h1 className="mt-4 text-[clamp(60px,min(9vw,13vh),140px)] font-semibold leading-[0.9] tracking-[-0.05em]">
+        {/* Long names (over 20 characters) get a smaller size, so "AI-Driven Solutions for Bangladesh's Needs" fits a 320px phone. */}
+        <h1 className={`mt-4 text-balance font-semibold leading-[0.92] tracking-[-0.05em] ${e.name.length > 20 ? "text-[clamp(36px,min(8vw,11vh),108px)]" : "text-[clamp(60px,min(9vw,13vh),140px)]"}`}>
           <span className="lx-ink-warm">{e.name}</span>
         </h1>
         <p className="hero-in mt-6 max-w-[580px] text-lg leading-relaxed text-soft md:text-xl" style={{ animationDelay: "0.2s" }}>
