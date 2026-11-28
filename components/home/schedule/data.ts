@@ -15,6 +15,8 @@ export const KIND_LABEL: Record<Milestone["kind"], string> = {
 
 /** "8–17 Dec", "26 Dec – 3 Jan", "27 Dec – …", or one date. */
 export const range = (m: Milestone) => {
+  // Registration's opening date is not announced yet: its window reads "Soon – 19 Jan".
+  if (m.kind === "window" && m.from === 0 && m.to !== undefined) return `Soon – ${dayLabel(m.to)}`;
   if (m.to === undefined || m.to === m.from) return dayLabel(m.from);
   if (m.open) return `${dayLabel(m.from)} – …`;
   const [d1, m1] = dayLabel(m.from).split(" ");

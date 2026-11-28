@@ -12,7 +12,7 @@ export default function ContestCards() {
     <section id="schedule" className="relative scroll-mt-20 overflow-hidden py-20 md:py-36">
       <div aria-hidden className="hero-dots pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative mx-auto flex max-w-[1440px] flex-col gap-12 px-6 md:gap-16 md:px-14">
-        <SectionHead n="01" label="Key dates" title="Every road ends on campus" sub={`Registration runs from 7 December to 19 January, and online rounds from 20 to 29 January. Every onsite final is on the KUET campus on 5 and 6 February${SHOW_PRIZES ? `, with ${fest.prizePool} BDT in prizes` : ""}.`} />
+        <SectionHead n="01" label="Key dates" title="Every road ends on campus" sub={`Registration opens soon and runs to 19 January, and online rounds run from 20 to 29 January. Every onsite final is on the KUET campus on 5 and 6 February${SHOW_PRIZES ? `, with ${fest.prizePool} BDT in prizes` : ""}.`} />
 
         <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           {events.map((e) => {

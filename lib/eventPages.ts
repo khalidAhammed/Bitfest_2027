@@ -38,7 +38,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Entry", v: "Open" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register online as an individual." },
+      { when: "Soon", t: "Registration opens", d: "Register online as an individual." },
       { when: "19 Jan", t: "Registration closes", d: "The entry list is locked." },
       { when: "25 Jan", t: "Posters due", d: "Submit your poster online." },
       { when: "6 Feb", t: "Winners announced", d: "At the festival's closing ceremony." },
@@ -71,7 +71,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "40" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register a team of three online." },
+      { when: "Soon", t: "Registration opens", d: "Register a team of three online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked." },
       { when: "20–29 Jan", t: "Online preliminary", d: "Free to enter." },
       { when: "31 Jan", t: "Finalists announced", d: "40 teams are invited to KUET; BDT 2,500 per selected team." },
@@ -105,7 +105,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Entry", v: "Open" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register online as an individual." },
+      { when: "Soon", t: "Registration opens", d: "Register online as an individual." },
       { when: "19 Jan", t: "Registration closes", d: "The entry list is locked." },
       { when: "25 Jan", t: "Entries due", d: "Submit your writing online." },
       { when: "6 Feb", t: "Winners announced", d: "At the festival's closing ceremony." },
@@ -138,7 +138,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "35" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register your team and project online." },
+      { when: "Soon", t: "Registration opens", d: "Register your team and project online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked." },
       { when: "5 Feb", t: "Exhibition opens", d: "Stalls open to judges and visitors at 10 am." },
       { when: "5 Feb", t: "Judging ends", d: "Scores are in by 5 pm." },
@@ -172,7 +172,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "140" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register a team of three and its coach online." },
+      { when: "Soon", t: "Registration opens", d: "Register a team of three and its coach online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked." },
       { when: "5 Feb", t: "Mock contest", d: "3 pm on the KUET campus: try the judge and the machines." },
       { when: "6 Feb", t: "Main contest", d: "Five hours on an ICPC-style judge." },
@@ -206,7 +206,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Places", v: "100 students" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register online as an individual." },
+      { when: "Soon", t: "Registration opens", d: "Register online as an individual." },
       { when: "19 Jan", t: "Registration closes", d: "The list of students is locked." },
       { when: "5 Feb", t: "Olympiad", d: "Two hours on the KUET campus, 10 am to 12 pm." },
       { when: "6 Feb", t: "Prize ceremony", d: "At the festival's closing, before CSE Night." },
@@ -239,7 +239,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "30" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register a team of two online." },
+      { when: "Soon", t: "Registration opens", d: "Register a team of two online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked." },
       { when: "6 Feb", t: "Presentations", d: "10 am to 3 pm: three minutes per team." },
       { when: "6 Feb", t: "Prize ceremony", d: "At the festival's closing, before CSE Night." },
@@ -272,7 +272,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "Top 30" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Form a team of three and register online." },
+      { when: "Soon", t: "Registration opens", d: "Form a team of three and register online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked for the preliminary." },
       { when: "20–29 Jan", t: "Online preliminary", d: "On a leaderboard platform. BDT 1,000 per team is paid at this stage." },
       { when: "31 Jan", t: "Finalists announced", d: "The top 30 teams are invited to KUET." },
@@ -306,7 +306,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "40" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register a team of four online." },
+      { when: "Soon", t: "Registration opens", d: "Register a team of four online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked." },
       { when: "20–29 Jan", t: "Online preliminary", d: "Free to enter." },
       { when: "31 Jan", t: "Finalists announced", d: "40 teams are invited to KUET." },
@@ -341,7 +341,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "Top 10" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register a team of three online." },
+      { when: "Soon", t: "Registration opens", d: "Register a team of three online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked." },
       { when: "20–29 Jan", t: "Written round", d: "An online round: the case, analysed in writing." },
       { when: "31 Jan", t: "Finalists announced", d: "The top 10 teams are invited to KUET." },
@@ -375,7 +375,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "30" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register a team of three online." },
+      { when: "Soon", t: "Registration opens", d: "Register a team of three online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked." },
       { when: "5 Feb", t: "Timed runs", d: "Every robot runs the track from 10 am." },
       { when: "5 Feb", t: "Knockout", d: "The fastest robots run again, done by 5 pm." },
@@ -405,7 +405,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Onsite teams", v: "30" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register your team of four online." },
+      { when: "Soon", t: "Registration opens", d: "Register your team of four online." },
       { when: "19 Jan", t: "Registration closes", d: "The team list is locked." },
       { when: "5 Feb", t: "Group matches", d: "Teams play their group matches from 10 am." },
       { when: "5 Feb", t: "Knockout and final", d: "The knockout, then the final, all done by 5 pm." },
@@ -439,7 +439,7 @@ export const eventPages: Record<string, EventPage> = {
       { k: "Entries", v: "80" },
     ],
     timeline: [
-      { when: "7 Dec", t: "Registration opens", d: "Register for one of the three titles online." },
+      { when: "Soon", t: "Registration opens", d: "Register for one of the three titles online." },
       { when: "19 Jan", t: "Registration closes", d: "The entry list is locked." },
       { when: "5 Feb", t: "Group stages", d: "All three titles, from 10 am." },
       { when: "5 Feb", t: "Finals", d: "Done by 5 pm." },
@@ -461,6 +461,6 @@ export const eventPages: Record<string, EventPage> = {
 /** The register button: the form once its URL is set; until then it says when registration opens and
     scrolls to the contest's timeline, so the button never leads nowhere. */
 export const registerCta = (href: string) =>
-  href && href !== "#" ? { href, label: "Register your team", short: "Register" } : { href: "#timeline", label: "Registration opens 7 Dec", short: "Register" };
+  href && href !== "#" ? { href, label: "Register your team", short: "Register" } : { href: "#timeline", label: "Registration opens soon", short: "Register" };
 /** The rulebook button only shows once there is a rulebook to open. */
 export const hasRulebook = (href: string) => Boolean(href) && href !== "#";

@@ -19,7 +19,7 @@ const general: { q: string; a: string }[] = [
   },
   {
     q: "How do I register?",
-    a: "Registration opens on 7 December 2026 and closes on 19 January 2027. Fees are per team or per person: BDT 350 to 500 per person for the individual contests, BDT 1,000 to 2,000 per team for most others and BDT 5,500 for IUPC. The AI Hackathon and Capture the Flag preliminaries are free to enter.",
+    a: "Registration opens soon and closes on 19 January 2027. Fees are per team or per person: BDT 350 to 500 per person for the individual contests, BDT 1,000 to 2,000 per team for most others and BDT 5,500 for IUPC. The AI Hackathon and Capture the Flag preliminaries are free to enter.",
   },
   {
     q: "How do the online rounds work?",

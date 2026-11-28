@@ -25,7 +25,7 @@ export const fest = {
     (csefest.kuet.ac.bd) still has the old cards until it pulls the cpanel branch. Switch back to a
     relative "/og/..." path once it does. `v` makes WhatsApp and Facebook fetch the new image instead
     of a cached old one; raise it whenever the cards are redrawn. */
-export const ogImage = (name: string) => `https://bitfest2027.vercel.app/og/${name}.jpg?v=2`;
+export const ogImage = (name: string) => `https://bitfest2027.vercel.app/og/${name}.jpg?v=3`;
 
 export type FestEvent = {
   slug: string;

@@ -11,7 +11,7 @@ export default function FinalCall() {
         n="04"
         label="Register"
         title="Choose your contest and register"
-        sub="Registration opens on 7 December 2026 and closes on 19 January 2027. Fees are per team or per person, and the AI Hackathon and Capture the Flag preliminaries are free to enter."
+        sub="Registration opens soon and closes on 19 January 2027. Fees are per team or per person, and the AI Hackathon and Capture the Flag preliminaries are free to enter."
       />
       <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
         <Button href="#schedule">Choose your contest</Button>
