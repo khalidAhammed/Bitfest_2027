@@ -35,7 +35,7 @@ const festJsonLd = {
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: e.day === "Online" ? "https://schema.org/OnlineEventAttendanceMode" : "https://schema.org/OfflineEventAttendanceMode",
     location: e.day === "Online" ? { "@type": "VirtualLocation", url: CONTEST_PAGES_LIVE ? `${SITE}/events/${e.slug}` : SITE } : kuet,
-    image: [`${SITE}/og/${["ai-solutions", "imagine-ai", "ict-olympiad"].includes(e.slug) ? "home" : e.slug}.jpg`],
+    image: [`${SITE}/og/${e.slug}.jpg`],
     url: CONTEST_PAGES_LIVE ? `${SITE}/events/${e.slug}` : SITE,
     organizer,
   })),

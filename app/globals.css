@@ -89,7 +89,7 @@ html.lenis body {
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(16px);
 }
 
 @media (prefers-reduced-motion: reduce) {

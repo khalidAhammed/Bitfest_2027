@@ -36,7 +36,7 @@ const HEROES: Record<string, ComponentType> = {
 };
 
 /** Contests with their own social card in public/og; the rest use the festival's. */
-const OG = new Set(["iupc", "ai-hackathon", "datathon", "3mt", "project-showcase", "lfr", "soccer-bot", "ctf", "it-case", "gaming"]);
+const OG = new Set(events.map((e) => e.slug));
 
 export const dynamicParams = false;
 

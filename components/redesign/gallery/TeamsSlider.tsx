@@ -41,6 +41,17 @@ export default function TeamsSlider() {
     if (byHand) touched.current = Date.now();
   };
 
+  // Once the page has finished loading and the browser is idle, fetch the first few photos in
+  // advance, so the slider is ready by the time it is scrolled to.
+  useEffect(() => {
+    const warm = () => setLoaded((s) => new Set([...s, 0, 1, 2, N - 1, N - 2]));
+    const idle = (window as unknown as { requestIdleCallback?: (f: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+    const start = () => (idle ? idle(warm, { timeout: 2500 }) : window.setTimeout(warm, 1200));
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
+  }, []);
+
   // Photos within two of the one in view (both ways round) are fetched; the rest wait.
   useEffect(() => {
     setLoaded((s) => {
@@ -136,7 +147,8 @@ export default function TeamsSlider() {
                     sizes="(max-width: 767px) 88vw, min(68vw, 1000px)"
                     alt={p.caption}
                     draggable={false}
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="low"
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover"
                   />

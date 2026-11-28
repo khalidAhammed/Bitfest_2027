@@ -56,11 +56,13 @@ export default function SmoothScroll() {
 
     const ctx = gsap.context(() => {
       if (reduce) return;
+      // Reveals start as soon as a block's top enters the window (plus a little ahead), and are short:
+      // a long, late, staggered fade made sections look as if they were still loading.
       ScrollTrigger.batch("[data-reveal]", {
-        start: "top 88%",
+        start: "top 102%",
         once: true,
         onEnter: (els) =>
-          gsap.to(els, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.08 }),
+          gsap.to(els, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: { each: 0.03, amount: Math.min(0.18, els.length * 0.03) } }),
       });
     });
 
